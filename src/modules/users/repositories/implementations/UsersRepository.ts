@@ -46,11 +46,11 @@ class UsersRepository implements IUsersRepository {
 
   turnAdmin(receivedUser: User): User {
     const userInRepository = this.findById(receivedUser.id);
-    if (userInRepository) {
-      userInRepository.admin = true;
-      return userInRepository;
+    if (!userInRepository) {
+      throw new Error("Could not find user");
     }
-    return receivedUser;
+    userInRepository.admin = true;
+    return userInRepository;
   }
 
   list(): User[] {
