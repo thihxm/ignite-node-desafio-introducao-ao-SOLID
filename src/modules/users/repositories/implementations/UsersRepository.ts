@@ -46,9 +46,6 @@ class UsersRepository implements IUsersRepository {
 
   turnAdmin(receivedUser: User): User {
     const userInRepository = this.findById(receivedUser.id);
-    if (!userInRepository) {
-      throw new Error("User does not exist");
-    }
 
     userInRepository.admin = true;
     userInRepository.updated_at = new Date();
