@@ -49,7 +49,10 @@ class UsersRepository implements IUsersRepository {
     if (!userInRepository) {
       throw new Error("Could not find user");
     }
+
     userInRepository.admin = true;
+    userInRepository.updated_at = new Date();
+
     return userInRepository;
   }
 
