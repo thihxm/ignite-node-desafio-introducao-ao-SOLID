@@ -47,7 +47,7 @@ class UsersRepository implements IUsersRepository {
   turnAdmin(receivedUser: User): User {
     const userInRepository = this.findById(receivedUser.id);
     if (!userInRepository) {
-      throw new Error("Could not find user");
+      throw new Error("User does not exist");
     }
 
     userInRepository.admin = true;
